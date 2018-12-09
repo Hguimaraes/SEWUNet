@@ -6,6 +6,11 @@ from helpers import ConfigObject
 from helpers import getListLibriSpeech
 from helpers import create_tensor
 
+# Increase resource limit
+import resource
+rlimit = resource.getrlimit(resource.RLIMIT_NOFILE)
+resource.setrlimit(resource.RLIMIT_NOFILE, (16384, rlimit[1]))
+
 # Parameters
 _params = {
     "SET_SEED": 1234,
@@ -21,9 +26,9 @@ _params = {
 # Data loader parameters to generate the tensors
 np.random.seed(_params['SET_SEED'])
 lsg_params = {
-    'batch_size': 2,
+    'batch_size': 8,
     'shuffle': False,
-    'num_workers': 1
+    'num_workers': 8
 }
 
 
