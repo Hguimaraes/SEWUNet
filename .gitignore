@@ -107,3 +107,4 @@ venv.bak/
 data/
 nbs/
 models/
+logs/
