@@ -50,16 +50,17 @@ class DownSamplingBlock(nn.Module):
 
 class UpSamplingBlock(nn.Module):
     """Decoder block of the Fully-convolutional Network"""
-    def __init__(self, in_ch, out_ch, activation, padding = None, kernel_size=5):
+    def __init__(self, in_ch, out_ch, activation,
+                 padding=None, kernel_size=5, mode="linear"):
         super(UpSamplingBlock, self).__init__()
         self.padding = padding or (kernel_size // 2)
-        
+
         # Convolution block
         self.conv = VSConvBlock(in_ch, out_ch,
                                 activation=activation,
                                 kernel_size=kernel_size,
                                 padding=self.padding)
-        
+
         # Deconvolution block
         self.deconv = nn.ConvTranspose1d(
             in_channels=in_ch - out_ch,
@@ -73,10 +74,16 @@ class UpSamplingBlock(nn.Module):
         )
 
         self.deconv_activation = activation
-        
+
     def forward(self, x, x_enc):
-        x = self.deconv(x)
-        x = self.deconv_activation(x)
+        if self.mode == "linear":
+            x = F.interpolate(x, scale_factor=2,
+                              mode='linear', align_corners=True)
+        else:
+            x = self.deconv(x)
+            x = self.deconv_activation(x)
+
+        # Concat with Skip connection
         x = torch.cat([x, x_enc], dim=1)
         return self.conv(x)
 
