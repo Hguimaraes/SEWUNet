@@ -53,6 +53,7 @@ class UpSamplingBlock(nn.Module):
     def __init__(self, in_ch, out_ch, activation,
                  padding=None, kernel_size=5, mode="linear"):
         super(UpSamplingBlock, self).__init__()
+        self.mode = mode
         self.padding = padding or (kernel_size // 2)
 
         # Convolution block
