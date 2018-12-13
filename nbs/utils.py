@@ -17,7 +17,7 @@ def reserve_pop(x):
     # Helper function to reverse a list
     return x[::-1][:-1]
 
-def id_generator(size=8, chars=string.ascii_uppercase + string.digits):
+def id_generator(size=15, chars=string.ascii_uppercase + string.digits):
     # https://stackoverflow.com/questions/2257441/random-string-generation-with-upper-case-letters-and-digits-in-python
     return ''.join(random.choice(chars) for _ in range(size))
 
@@ -47,7 +47,7 @@ class LibriSpeechGenerator(data.Dataset):
         
         # Working condition
         if self.mode == "noise" and y is None:
-            raise ValueError("y should be None for Noise mode")
+            raise ValueError("y should not be None for Noise mode")
         
         # Datasets
         self.X, self.y = X, y

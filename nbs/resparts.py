@@ -1,3 +1,4 @@
+import copy
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -19,15 +20,32 @@ class VSConvBlock(nn.Module):
                               kernel_size=kernel_size,
                               stride=1,
                               dilation=dilation)
-        self.batch = nn.BatchNorm1d(out_ch)
+        
+        self.conv2 = nn.Conv1d(out_ch, out_ch,
+                              kernel_size=kernel_size,
+                              stride=1,
+                              dilation=dilation)
+
         self.activation = activation
+        self.activation2 = activation
+        
+        # Resnet identity mapping
+        self.id_map = nn.Conv1d(in_ch, out_ch, kernel_size=1, stride=1)
 
     def forward(self, x):
+        # Residual
+        res = copy.copy(x)
+        
         # Block 1
         x = self.padding_layer(x)
         x = self.conv(x)
-        # x = self.batch(x)
         x = self.activation(x)
+        
+        # Block 2
+        x = self.padding_layer(x)
+        x = self.conv2(x)
+        #x += self.id_map(res)
+        x = self.activation2(x)
 
         return x
 
@@ -75,15 +93,12 @@ class UpSamplingBlock(nn.Module):
                 dilation=1
             )
 
-            # self.deconv_activation = activation
-
     def forward(self, x, x_enc):
         if self.mode == "linear":
             x = F.interpolate(x, scale_factor=2,
                               mode='linear', align_corners=True)
         else:
             x = self.deconv(x)
-            # x = self.deconv_activation(x)
 
         # Concat with Skip connection
         x = torch.cat([x, x_enc], dim=1)

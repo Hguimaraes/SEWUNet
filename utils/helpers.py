@@ -206,7 +206,7 @@ class LibriSpeechGenerator(data.Dataset):
                 noise = noise[:n]
 
             # apply additive noise
-            snr = np.random.uniform(low=0, high=5)
+            snr = np.random.uniform(low=5, high=15)
 
             combined.append(self.insert_controlled_noise(signal, noise, snr))
         return np.array(combined)
