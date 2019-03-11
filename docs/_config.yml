@@ -1,14 +1,14 @@
 # Setup
-title:        Project or Site name
-tagline:      A responsive theme for your project on GitHub Pages
-baseurl:      ""
+title:        SEWUNet
+tagline:      Monaural Speech Enhancement through Deep Wave-U-Net
+baseurl:      "http://hguimaraes.me/SEWUNet"
 paginate:     1
 locale:       "en"
 
 # About/contact
 author:
-  name:       Author name
-  url:        http://yourhomepage.com 
+  name:       Heitor Guimarães
+  url:        http://hguimaraes.me 
 
 # Gems
 gems:
