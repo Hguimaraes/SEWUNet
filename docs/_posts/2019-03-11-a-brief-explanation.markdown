@@ -29,7 +29,9 @@ The typical use of a convolutional network it is on classification problems wher
 
 The U-Net model was proposed by Ronneberger et al to solve the segmentation problem of neuronal structures in EM (electron microscope) stacks and won the ISBI challenge.
 
+<p align="center">
 <img src="{{ site.baseurl }}/assets/unetarchitecture.png" alt="U-Net model" align="middle">
+</p>
 
 In the figure above we can see the architecture of the U-Net. It is a fully convolutional neural network, with a contracting path (left side), a bottleneck layer and an expansive path (right side). The left path follows a typical architecture of a CNN, where we repeatedly apply two convolutions without padding and followed by a non-linear activation function (ReLU) and a maxpooling operation for downsampling. While we downsample the space in factor of 2, we double the number of feature channels in the network.
 
@@ -37,7 +39,9 @@ In the figure above we can see the architecture of the U-Net. It is a fully conv
 
 The Wave-U-Net combines elements from the U-Net architecture, by using the raw-waveform and one-dimensional convolutions, with some of the architectures discussed before. The network consists of a contracting path (the left side) and an expansive path (right side) similar with the U-Net, but using one-dimensional convolutions as our basic block. A schema of the network can be found on figure below.
 
-<img src="{{ site.baseurl }}/assets/WaveUNet.png" alt="Wave-U-Net model" align="middle">
+<p align="center">
+	<img src="{{ site.baseurl }}/assets/WaveUNet.png" alt="Wave-U-Net model">
+</p>
 
 Each layer, or block, on the diagram has a convolutional block followed by a downsample or preceded by an upsample operation. The convolutional block is constituted by an one-dimensional convolution and a non-linear activation function. All the layers, except for the last in expansive path, has a LeakyReLU activation. The last layer (block 1 on expansive path) has a *Tanh* activation. The downsample module is a decimate operation where we halve the dimension of the feature map. In the upsample module we tested some combinations as linear interpolation and transposed convolutions.
 
@@ -90,14 +94,15 @@ Under the conditions described above, we trained our three models over 25 epochs
   </tr>
 </table>
 
-
-<img src="{{ site.baseurl }}/assets/modelcomp.png" alt="Comparison of the models" align="middle">
-
+<p align="center">
+	<img src="{{ site.baseurl }}/assets/modelcomp.png" alt="Comparison of the models">
+</p>
 From table above we can see that all of our methods are preferred over Wiener filter. Model *M3* had the best performance on the SNR metric. Being initialized with an autoencoder gave the model a boosting in both performance at the start point and allowed the model to learn for more time.
 
 As *M3* was the best model on this task, we trained again the model for 100 epochs. The SNR reached on this task was of 15.8.
 
 To evaluate a pratical usage of our model, we tested an ASR model to transcribe noisy and processed audios. The table bellow shows the results of our experiment, meaning that the usage of this network as an preprocessing step for speech-to-text algorithm has the potential to reduce errors. The word error rate of the ground truth (clean test set before insert noises) is **9.63%**.
+
 
 <table>
   <tr>
@@ -106,7 +111,7 @@ To evaluate a pratical usage of our model, we tested an ASR model to transcribe 
     <th>Processed Signal (WER)</th>
   </tr>
   <tr>
-    <td>[0, 10]/td>
+    <td>[0, 10]</td>
     <td>X</td>
     <td>X</td>
   </tr>
@@ -117,21 +122,10 @@ To evaluate a pratical usage of our model, we tested an ASR model to transcribe 
   </tr>
   <tr>
     <td>[10, 20]</td>
-    <td>X</td>
-    <td>X</td>
+    <td>21.77%</td>
+    <td>18.49%</td>
   </tr>
 </table>
 
 
 To hear some of the results you can access the result [here]().
-
-<style>
-
-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%;
-}
-
-</style>
