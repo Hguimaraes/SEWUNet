@@ -5,7 +5,7 @@
 Check the full paper [here](). 
 
 <p align="center">
-  <img src="assets/WaveUNet.png">
+  <img src="docs/assets/WaveUNet.png">
 </p>
 
 ## Introduction
@@ -47,5 +47,5 @@ Result examples can be seen on the *assets/results* folder.
 
 <center>Spectrogram of the 00FWQOXLMACK5HE sample</center>
 <p align="center">
-  <img src="assets/00FWQOXLMACK5HE.png">
+  <img src="docs/assets/00FWQOXLMACK5HE.png">
 </p>
