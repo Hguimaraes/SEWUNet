@@ -5,20 +5,99 @@ date:   2019-03-12 00:00:00
 categories: main
 ---
 
-You'll find this post in your `_posts` directory - edit this post and re-build (or run with the `-w` switch) to see your changes!
-To add new posts, simply add a file in the `_posts` directory that follows the convention: YYYY-MM-DD-name-of-post.ext.
+## Speech Enhancement Task
 
-Jekyll also offers powerful support for code snippets:
+### SNR between 10db-20db
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
-
-Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll's GitHub repo][jekyll-gh].
-
-[jekyll-gh]: https://github.com/mojombo/jekyll
-[jekyll]:    http://jekyllrb.com
+<table>
+  <tr>
+    <th>Noisy Signal</th>
+    <th>Our Method</th>
+    <th>Ground Truth</th>
+  </tr>
+  <tr>
+    <td>
+    	<audio controls>
+  			<source src="/assets/results/10db_20db/2300-131720-0040_noisy.wav" type="audio/wav">
+  		</audio>
+	</td>
+	<td>
+    	<audio controls>
+  			<source src="/assets/results/10db_20db/2300-131720-0040_processed.wav" type="audio/wav">
+  		</audio>
+	</td>
+	<td>
+    	<audio controls>
+  			<source src="/assets/results/10db_20db/2300-131720-0040.wav" type="audio/wav">
+  		</audio>
+	</td>
+  </tr>
+  <tr>
+    <td>
+    	<audio controls>
+  			<source src="/assets/results/10db_20db/3570-5695-0012_noisy.wav" type="audio/wav">
+  		</audio>
+	</td>
+	<td>
+    	<audio controls>
+  			<source src="/assets/results/10db_20db/3570-5695-0012_processed.wav" type="audio/wav">
+  		</audio>
+	</td>
+	<td>
+    	<audio controls>
+  			<source src="/assets/results/10db_20db/3570-5695-0012.wav" type="audio/wav">
+  		</audio>
+	</td>
+  </tr>
+  <tr>
+    <td>
+    	<audio controls>
+  			<source src="/assets/results/10db_20db/5639-40744-0040_noisy.wav" type="audio/wav">
+  		</audio>
+	</td>
+	<td>
+    	<audio controls>
+  			<source src="/assets/results/10db_20db/5639-40744-0040_processed.wav" type="audio/wav">
+  		</audio>
+	</td>
+	<td>
+    	<audio controls>
+  			<source src="/assets/results/10db_20db/5639-40744-0040.wav" type="audio/wav">
+  		</audio>
+	</td>
+  </tr>
+  <tr>
+    <td>
+    	<audio controls>
+  			<source src="/assets/results/10db_20db/7729-102255-0027_noisy.wav" type="audio/wav">
+  		</audio>
+	</td>
+	<td>
+    	<audio controls>
+  			<source src="/assets/results/10db_20db/7729-102255-0027_processed.wav" type="audio/wav">
+  		</audio>
+	</td>
+	<td>
+    	<audio controls>
+  			<source src="/assets/results/10db_20db/7729-102255-0027.wav" type="audio/wav">
+  		</audio>
+	</td>
+  </tr>
+  <tr>
+    <td>
+    	<audio controls>
+  			<source src="/assets/results/10db_20db/61-70970-0037_noisy.wav" type="audio/wav">
+  		</audio>
+	</td>
+	<td>
+    	<audio controls>
+  			<source src="/assets/results/10db_20db/61-70970-0037_processed.wav" type="audio/wav">
+  		</audio>
+	</td>
+	<td>
+    	<audio controls>
+  			<source src="/assets/results/10db_20db/61-70970-0037.wav" type="audio/wav">
+  		</audio>
+	</td>
+  </tr>
+</table>
