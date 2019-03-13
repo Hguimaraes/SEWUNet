@@ -174,6 +174,99 @@ Here we apply our method to more diverse audios on the full length. The results 
 
 ### SNR between 5db-15db
 
+<table>
+  <tr>
+    <th>Noisy Signal</th>
+    <th>Our Method</th>
+    <th>Ground Truth</th>
+  </tr>
+  <tr>
+    <td>
+      <audio controls style="width: 215px;">
+        <source src="{{ site.baseurl }}/assets/results/5db_15db/260-123286-0022_noisy.wav" type="audio/wav">
+      </audio>
+    </td>
+    <td>
+        <audio controls style="width: 215px;">
+          <source src="{{ site.baseurl }}/assets/results/5db_15db/260-123286-0022_processed.wav" type="audio/wav">
+        </audio>
+    </td>
+    <td>
+        <audio controls style="width: 215px;">
+          <source src="{{ site.baseurl }}/assets/results/5db_15db/260-123286-0022.wav" type="audio/wav">
+        </audio>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <audio controls style="width: 215px;">
+        <source src="{{ site.baseurl }}/assets/results/5db_15db/3729-6852-0028_noisy.wav" type="audio/wav">
+      </audio>
+    </td>
+    <td>
+        <audio controls style="width: 215px;">
+          <source src="{{ site.baseurl }}/assets/results/5db_15db/3729-6852-0028_processed.wav" type="audio/wav">
+        </audio>
+    </td>
+    <td>
+        <audio controls style="width: 215px;">
+          <source src="{{ site.baseurl }}/assets/results/5db_15db/3729-6852-0028.wav" type="audio/wav">
+        </audio>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <audio controls style="width: 215px;">
+        <source src="{{ site.baseurl }}/assets/results/5db_15db/4507-16021-0051_noisy.wav" type="audio/wav">
+      </audio>
+    </td>
+    <td>
+        <audio controls style="width: 215px;">
+          <source src="{{ site.baseurl }}/assets/results/5db_15db/4507-16021-0051_processed.wav" type="audio/wav">
+        </audio>
+    </td>
+    <td>
+        <audio controls style="width: 215px;">
+          <source src="{{ site.baseurl }}/assets/results/5db_15db/4507-16021-0051.wav" type="audio/wav">
+        </audio>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <audio controls style="width: 215px;">
+        <source src="{{ site.baseurl }}/assets/results/5db_15db/5683-32866-0019_noisy.wav" type="audio/wav">
+      </audio>
+    </td>
+    <td>
+        <audio controls style="width: 215px;">
+          <source src="{{ site.baseurl }}/assets/results/5db_15db/5683-32866-0019_processed.wav" type="audio/wav">
+        </audio>
+    </td>
+    <td>
+        <audio controls style="width: 215px;">
+          <source src="{{ site.baseurl }}/assets/results/5db_15db/5683-32866-0019.wav" type="audio/wav">
+        </audio>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <audio controls style="width: 215px;">
+        <source src="{{ site.baseurl }}/assets/results/5db_15db/8224-274384-0006_noisy.wav" type="audio/wav">
+      </audio>
+    </td>
+    <td>
+        <audio controls style="width: 215px;">
+          <source src="{{ site.baseurl }}/assets/results/5db_15db/8224-274384-0006_processed.wav" type="audio/wav">
+        </audio>
+    </td>
+    <td>
+        <audio controls style="width: 215px;">
+          <source src="{{ site.baseurl }}/assets/results/5db_15db/8224-274384-0006.wav" type="audio/wav">
+        </audio>
+    </td>
+  </tr>
+</table>
+
 ### SNR between 0db-10db
 
 <table>

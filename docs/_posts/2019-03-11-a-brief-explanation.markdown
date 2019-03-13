@@ -112,8 +112,8 @@ To evaluate a pratical usage of our model, we tested an ASR model to transcribe 
   </tr>
   <tr>
     <td>[0, 10]</td>
-    <td>X</td>
-    <td>X</td>
+    <td>52.68%</td>
+    <td>40.93%,</td>
   </tr>
   <tr>
     <td>[5, 15]</td>
