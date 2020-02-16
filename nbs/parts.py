@@ -9,12 +9,12 @@ import matplotlib.pyplot as plt
 class VSConvBlock(nn.Module):
     """"""
     def __init__(self, in_ch, out_ch, activation,
-                 dilation=1, padding=0, kernel_size=15):
+                 dilation=1, padding=0, kernel_size=15, pad_type = "rp"):
         """"""
         super(VSConvBlock, self).__init__()
         self.padding = padding
 
-        self.padding_layer = nn.ReflectionPad1d(self.padding)
+        self.padding_layer = nn.ReflectionPad1d(self.padding) if pad_type == "rp" else nn.ConstantPad1d(self.padding, 0)
         self.conv = nn.Conv1d(in_ch, out_ch,
                               kernel_size=kernel_size,
                               stride=1,
@@ -35,13 +35,14 @@ class VSConvBlock(nn.Module):
 class DownSamplingBlock(nn.Module):
     """Encoder block of the Fully-convolutional Network"""
     def __init__(self, in_ch, out_ch, activation,
-                 padding=0, dilation=1, kernel_size=15):
+                 padding=0, dilation=1, kernel_size=15, pad_type="rp"):
         super(DownSamplingBlock, self).__init__()
         self.block = VSConvBlock(in_ch, out_ch,
                                  activation=activation,
                                  kernel_size=kernel_size,
                                  padding=padding,
-                                 dilation=dilation)
+                                 dilation=dilation, 
+                                 pad_type=pad_type)
 
     def forward(self, x):
         x = self.block(x)
@@ -51,7 +52,7 @@ class DownSamplingBlock(nn.Module):
 class UpSamplingBlock(nn.Module):
     """Decoder block of the Fully-convolutional Network"""
     def __init__(self, in_ch, out_ch, activation,
-                 padding=None, kernel_size=5, mode="linear"):
+                 padding=None, kernel_size=5, mode="linear", pad_type="rp"):
         super(UpSamplingBlock, self).__init__()
         self.mode = mode
         self.padding = padding or (kernel_size // 2)
@@ -60,7 +61,8 @@ class UpSamplingBlock(nn.Module):
         self.conv = VSConvBlock(in_ch, out_ch,
                                 activation=activation,
                                 kernel_size=kernel_size,
-                                padding=self.padding)
+                                padding=self.padding,
+                                pad_type=pad_type)
 
         # Deconvolution block
         if not self.mode == "linear":
@@ -93,12 +95,12 @@ class UpSamplingBlock(nn.Module):
 class OutBlock(nn.Module):
     """Convolutional block similar to VSConvBlock.
     The network input is fed into this layer"""
-    def __init__(self, in_ch, out_ch, activation, padding=0):
+    def __init__(self, in_ch, out_ch, activation, padding=0, pad_type="rp"):
         super(OutBlock, self).__init__()
         self.conv = VSConvBlock(in_ch, out_ch,
                                 activation=activation,
                                 kernel_size=1,
-                                padding=padding)
+                                padding=padding, pad_type=pad_type)
 
     def forward(self, x, x_enc):
         x = torch.cat([x, x_enc], dim=1)

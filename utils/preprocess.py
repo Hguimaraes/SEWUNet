@@ -7,9 +7,9 @@ from helpers import getListLibriSpeech
 from helpers import create_tensor
 
 # Increase resource limit
-import resource
-rlimit = resource.getrlimit(resource.RLIMIT_NOFILE)
-resource.setrlimit(resource.RLIMIT_NOFILE, (16384, rlimit[1]))
+# import resource
+# rlimit = resource.getrlimit(resource.RLIMIT_NOFILE)
+# resource.setrlimit(resource.RLIMIT_NOFILE, (16384, rlimit[1]))
 
 # Parameters
 _params = {
@@ -26,7 +26,7 @@ _params = {
 # Data loader parameters to generate the tensors
 np.random.seed(_params['SET_SEED'])
 lsg_params = {
-    'batch_size': 8,
+    'batch_size': 32,
     'shuffle': False,
     'num_workers': 8
 }
@@ -42,15 +42,15 @@ def main():
                                                      .pop()
                                                      .split('-')[0])
 
-    # Split into train for weight init network and for training the network
-    readers = np.unique(ls_df.READER.values)
-    readers_init, readers_net = train_test_split(readers, test_size=0.5)
-    ls_df_init = ls_df.loc[ls_df['READER'].isin(readers_init)]
-    ls_df_net = ls_df.loc[ls_df['READER'].isin(readers_net)]
+    # # Split into train for weight init network and for training the network
+    # readers = np.unique(ls_df.READER.values)
+    # readers_init, readers_net = train_test_split(readers, test_size=0.5)
+    # ls_df_init = ls_df.loc[ls_df['READER'].isin(readers_init)]
+    # ls_df_net = ls_df.loc[ls_df['READER'].isin(readers_net)]
 
-    # Create the tensors for weight init and full-network
-    create_tensor(ls_df_init, config, lsg_params, 'weight')
-    create_tensor(ls_df_net, config, lsg_params)
+    # # Create the tensors for weight init and full-network
+    # create_tensor(ls_df_init, config, lsg_params, 'weight')
+    # create_tensor(ls_df_net, config, lsg_params)
 
 
 if __name__ == '__main__':
