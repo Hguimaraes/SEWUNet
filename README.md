@@ -2,7 +2,7 @@
 
 > Speech Enhancement through Deep Wave-U-Net
 
-Check the full paper [here](). 
+Check the full paper [here](https://www.sciencedirect.com/science/article/abs/pii/S0957417420304061).
 
 <p align="center">
   <img src="docs/assets/WaveUNet.png">
@@ -49,3 +49,20 @@ Result examples can be seen on the *assets/results* folder.
 <p align="center">
   <img src="docs/assets/00FWQOXLMACK5HE.png">
 </p>
+
+## Cite
+```latex
+@article{GUIMARAES2020113582,
+title = {Monaural speech enhancement through deep wave-U-net},
+journal = {Expert Systems with Applications},
+volume = {158},
+pages = {113582},
+year = {2020},
+issn = {0957-4174},
+doi = {https://doi.org/10.1016/j.eswa.2020.113582},
+url = {https://www.sciencedirect.com/science/article/pii/S0957417420304061},
+author = {Heitor R. Guimarães and Hitoshi Nagano and Diego W. Silva},
+keywords = {Speech enhancement, Noise reduction, Wave-U-net, Deep learning, Signal to Noise Ratio (SNR), Word Error Rate (WER)},
+abstract = {In this paper, we present Speech Enhancement through Wave-U-Net (SEWUNet), an end-to-end approach to reduce noise from speech signals. This background context is detrimental to several downstream systems, including automatic speech recognition (ASR) and word spotting, which in turn can negatively impact end-user applications. We show that our proposal does improve signal-to-noise ratio (SNR) and word error rate (WER) compared with existing mechanisms in the literature. In the experiments, network input is a 16 kHz sample rate audio waveform corrupted by an additive noise. Our method is based on the Wave-U-Net architecture with some adaptations to our problem. Four simple enhancements are proposed and tested with ablation studies to prove their validity. In particular, we highlight the weight initialization through an autoencoder before training for the main denoising task, which leads to a more efficient use of training time and a higher performance. Through quantitative metrics, we show that our method is prefered over the classical Wiener filtering and shows a better performance than other state-of-the-art proposals.}
+}
+```
