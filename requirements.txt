@@ -20,7 +20,7 @@ librosa==0.7.2
 llvmlite==0.31.0
 matplotlib==3.1.2
 numba==0.47.0
-numpy==1.18.1
+numpy==1.22.0
 pandas==0.25.3
 parso==0.6.0
 pexpect==4.8.0
